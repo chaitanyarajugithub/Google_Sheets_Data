@@ -132,7 +132,6 @@ ValueRange januaryTotal = readResult.getValueRanges().get(0);
 //String total = (String) januaryTotal.getValues().get(0).get(0);
 System.out.println((januaryTotal.getValues().get(0).get(0)));
 
- 
 ValueRange febTotal = readResult.getValueRanges().get(1);
 System.out.println((febTotal.getValues().get(0).get(0)));
 }
