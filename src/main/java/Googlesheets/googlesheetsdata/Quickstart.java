@@ -122,6 +122,10 @@ System.out.printf("%s,%s,%s\n", row.get(0),row.get(1), row.get(2));
 	    e.printStackTrace();
 	}
 }
+Quickstart a = new Quickstart();
+String Print = a.Getcelldata("C10", "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms");
+System.out.println(Print);
+
 List<String> ranges = Arrays.asList("C9","C10");
 BatchGetValuesResponse readResult = getSheetsService().spreadsheets().values()
   .batchGet("1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms")
@@ -134,6 +138,18 @@ System.out.println((januaryTotal.getValues().get(0).get(0)));
 
 ValueRange febTotal = readResult.getValueRanges().get(1);
 System.out.println((febTotal.getValues().get(0).get(0)));
+
 }
+
 }
+public String Getcelldata(String Cellnumber,String Sheetid) throws IOException {
+	List<String> ranges = Arrays.asList(Cellnumber);
+	BatchGetValuesResponse readResult = getSheetsService().spreadsheets().values()
+	  .batchGet(Sheetid)
+	  .setRanges(ranges)
+	  .execute();  
+	ValueRange data = readResult.getValueRanges().get(0);
+	String Celldata = (String) (data.getValues().get(0).get(0));
+	return Celldata;
+  }
 }
